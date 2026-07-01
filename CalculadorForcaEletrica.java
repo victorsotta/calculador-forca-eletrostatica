@@ -135,13 +135,8 @@ public class CalculadorForcaEletrica {
         return linha;
     }
 
-    /**
-     * Lógica física: Calcula a força exercida por q1, q2 e q4 sobre q3
-     */
-    /**
-     * Lógica física CORRIGIDA: Calcula a força exercida por q1, q2 e q4 sobre q3
-     */
-/**
+  
+
      * Lógica física da Fig 21.15: Calcula as componentes X e Y da força sobre q3
      */
     private static void calcularForcaEletrica() {
