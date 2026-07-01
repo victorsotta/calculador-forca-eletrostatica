@@ -1,64 +1,69 @@
-# Calculador de Forca Eletrostatica
+Calculador de Força Eletrostática
 
-Interface grafica em Java desenvolvida para automatizar a analise vetorial de forcas eletrostaticas entre multiplas particulas carregadas com base na Lei de Coulomb e o Pincípio da Superposição. O projeto foi projetado para resolver numericamente o problema de geometria quadrada fixa apresentado na Fig. 21.15.
+Interface gráfica em Java desenvolvida para automatizar a análise vetorial de forças eletrostáticas entre múltiplas partículas carregadas, utilizando a Lei de Coulomb e o princípio da superposição. O projeto foi criado para resolver numericamente o problema de geometria quadrada fixa apresentado na Figura 21.15.
 
----
+O Problema Físico:
 
-## O Problema Fisico
+O programa calcula as forças eletrostáticas que atuam sobre a Partícula 3, localizada na origem (0,0) de um plano cartesiano. Essa partícula sofre influência de outras três cargas posicionadas nos vértices de um quadrado de lado a.
 
-O programa calcula as interacoes eletrostaticas que atuam especificamente sobre a Particula 3, localizada na origem (0,0) de um plano cartesiano. A particula alvo esta cercada por outras tres cargas dispostas nos vertices de um quadrado de lado $a$.
+Configuração Geométrica
+Partícula 3 (alvo): posição (0,0)
+Partícula 1: posição (0,a)
+Partícula 4: posição (a,0)
+Partícula 2: posição (a,a) (localizada na diagonal)
 
-### Configuracao Geometrica
- Particula 3 (Alvo) Posicao $(0, 0)$
- Particula 1 Posicao $(0, a)$
- Particula 4 Posicao $(a, 0)$
- Particula 2 Posicao $(a, a)$ (Diagonal)
+O software calcula as forças causadas por cada carga, determina se elas são de atração ou repulsão e realiza a decomposição vetorial das forças para encontrar as componentes resultantes nos eixos X e Y, além do módulo da força total.
 
-O software calcula as magnitudes puras das forcas de atracao ou repulsao e realiza a decomposicao vetorial para entregar as componentes resultantes $F_x$ e $F_y$, alem do modulo da forca total.
+Funcionalidades:
+Interface gráfica utilizando Java Swing, com campos de entrada para as cargas q1, q2, q3 e q4 em nanoCoulombs (nC), além do lado do quadrado a em centímetros (cm).
+Validação de dados através de tratamento de exceções (try-catch), evitando entradas vazias, caracteres inválidos e valores físicos incorretos, como um lado do quadrado menor ou igual a zero.
+Memória de cálculo através de uma área de texto (JTextArea), mostrando o desenvolvimento das fórmulas e o passo a passo dos cálculos realizados.
+Saída formatada exibindo as componentes da força nos eixos X e Y e a força resultante em Newtons (N).
 
----
+Tecnologias Utilizadas:
+Linguagem Java (JDK 21)
+Interface gráfica utilizando javax.swing e java.awt
+Ambiente de desenvolvimento Visual Studio Code (VS Code)
 
-## Funcionalidades
+Modelagem Matemática e Implementação:
 
- Interface Grafica (Swing) Campos de texto para entrada das cargas ($q_1, q_2, q_3, q_4$) em nanoCoulombs ($nC$) e o lado do quadrado ($a$) em centimetros ($cm$).
- Validacao de Dados Tratamento de excecoes (`try-catch`) para impedir campos vazios, caracteres invalidos ou valores geometricos inconsistentes (lado menor ou igual a zero).
- Memoria de Calculo Area de texto dedicada (`JTextArea`) que exibe o fluxo algebrico e o passo a passo das equacoes estruturadas.
- Saida Formatada Exibicao das componentes cartesianas da forca em Newtons ($N$) com precisao decimal.
+O projeto foi desenvolvido em um único arquivo chamado CalculadorForcaEletrica.java. O código separa a criação dos componentes visuais da parte responsável pelos cálculos físicos, realizada pelo método calcularForcaEletrica().
 
----
+Fórmulas Implementadas
 
-## Tecnologias Utilizadas
+Lei de Coulomb:
 
- Linguagem Java (JDK 21)
- GUI (Interface Grafica) `javax.swing` e `java.awt` (utilizando o Look and Feel nativo do sistema operacional)
- Ambiente de Desenvolvimento Visual Studio Code (VS Code)
+F = k × |qA × qB| / r²
 
----
+Onde:
 
-## Modelagem Matematica e Implementacao
+F representa a força elétrica entre duas cargas;
+k é a constante eletrostática;
+qA e qB são os valores das cargas;
+r representa a distância entre as cargas.
 
-O projeto foi centralizado em um unico arquivo estruturado (`CalculadorForcaEletrica.java`), isolando a construcao dos componentes visuais do metodo de processamento logico (`calcularForcaEletrica()`).
+Decomposição vetorial das forças diagonais:
 
-### Formulas Implementadas
+Fx = F × cos(45°)
 
- Lei de Coulomb
-  $$F = k cdot frac{q_A cdot q_B}{r^2}$$
+Fy = F × sen(45°)
 
- Decomposicao Vetorial (45 graus)
-  $$F_x = F_{mag} cdot cos(45^circ)$$
-  $$F_y = F_{mag} cdot sin(45^circ)$$
+As componentes das forças são somadas separadamente nos eixos X e Y. Depois disso, o módulo da força resultante é calculado utilizando o Teorema de Pitágoras:
 
----
+Fr = √(Fx² + Fy²)
 
-## Como Executar o Projeto
+Como Executar o Projeto
 
-A aplicacao utiliza apenas pacotes nativos da API do Java, dispensando gerenciadores de dependencias externos como Maven ou Gradle.
+A aplicação utiliza apenas bibliotecas nativas do Java, não sendo necessário instalar gerenciadores de dependências como Maven ou Gradle.
 
-### Pre-requisitos
- Java JDK instalado e configurado nas variaveis de ambiente (versao 11 ou superior).
+Pré-requisitos
+Java JDK instalado e configurado nas variáveis de ambiente.
+Versão recomendada: JDK 11 ou superior.
 
-### Comandos para Execucao
+Comandos para execução:
 
-1. Compile o arquivo fonte
-   ```bash
-   javac CalculadorForcaEletrica.java
+Compile o arquivo fonte:
+javac CalculadorForcaEletrica.java
+
+Execute o programa:
+java CalculadorForcaEletrica
